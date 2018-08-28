@@ -14,4 +14,9 @@ function agreed(e) {
   } else {
     promptText.textContent = "That-a-boy!";
   }
+  document.querySelector("#buttonsDiv").style.display = "none";
+  setTimeout(close, 1500);
+}
+function close() {
+  promptBox.classList.remove("show");
 }
