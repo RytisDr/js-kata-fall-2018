@@ -3,7 +3,27 @@ html {
   margin: 0 auto;
 }
 #promptBox {
+  top: -220px;
   width: 100vw;
   height: 200px;
   background-color: hsl(30, 54%, 70%);
+  position: relative;
+  transition: all 1s;
+}
+#promptBox.show {
+  top: 0;
+}
+h1 {
+  font-family: "Merriweather", serif;
+  font-size: 15pt;
+  text-align: center;
+  margin: auto;
+  padding-top: 50px;
+}
+#buttons {
+  position: absolute;
+  margin: 0 auto;
+}
+button h1 {
+  padding: 0;
 }
