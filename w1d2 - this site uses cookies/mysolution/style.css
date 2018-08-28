@@ -1,0 +1,9 @@
+body,
+html {
+  margin: 0 auto;
+}
+#promptBox {
+  width: 100vw;
+  height: 200px;
+  background-color: hsl(30, 54%, 70%);
+}
