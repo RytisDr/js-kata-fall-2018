@@ -20,10 +20,17 @@ h1 {
   margin: auto;
   padding-top: 50px;
 }
-#buttons {
-  position: absolute;
-  margin: 0 auto;
+#buttonsDiv {
+  width: 275px;
+  margin: auto;
+  margin-top: 20px;
+}
+button {
+  cursor: pointer;
+  background: white;
+  border: none;
+  margin: 0 5px 0 5px;
 }
 button h1 {
-  padding: 0;
+  padding: 10px;
 }
