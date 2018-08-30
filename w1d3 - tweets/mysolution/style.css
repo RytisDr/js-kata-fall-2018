@@ -2,6 +2,6 @@ body,
 html {
   margin: 0 auto;
 }
-.tweetBox {
+.singleTweet {
   border: 1px solid black;
 }
