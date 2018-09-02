@@ -5,3 +5,6 @@ html {
 .singleTweet {
   border: 1px solid black;
 }
+a {
+  margin: 5px;
+}

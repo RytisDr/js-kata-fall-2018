@@ -1,10 +1,11 @@
 "use strict";
 let urlParams = new URLSearchParams(window.location.search);
 let hashtag = urlParams.get("hashtag");
+let tweetCount;
 const template = document.querySelector(".tweetTemp").content;
-let tweetCount = 50;
-
 const tweetBox = document.querySelector(".tweetSection");
+
+const fetchBtn = document.querySelector("#fetchButton");
 function fetchTweets() {
   let endP = "https://kea-alt-del.dk/twitter/api/?_embed&count=" + tweetCount;
   if (hashtag) {
@@ -32,9 +33,12 @@ function showSingleTweet(aTweet) {
     let a = document.createElement("a");
     a.textContent = hashtagInTweet.text;
     a.href = "?hashtag=" + hashtagInTweet.text;
+
     clone.querySelector(".hashtags").appendChild(a);
   });
   tweetBox.appendChild(clone);
 }
-
-fetchTweets();
+fetchBtn.addEventListener("click", function() {
+  tweetCount = document.querySelector("#nrInput").value;
+  fetchTweets();
+});
