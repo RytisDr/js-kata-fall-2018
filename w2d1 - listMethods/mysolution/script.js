@@ -22,12 +22,9 @@ function listMethods(idParam, loopArg) {
     if (loopArg == "for") {
       console.log("with for loop method");
       displayElementForLoop(liItemsFound);
-    } else if (loopArg == "forEach") {
-      console.log("with forEach loop method");
-      liItemsFound.forEach(displayElementForEachLoop);
-    } else {
+    } else if (loopArg == "forEach" || loopArg != "for") {
       console.log(
-        "undefined or incorrectly defined loopArg, goes to forEach loop method"
+        "with forEach loop method, either specified for each or not correctly specified loop method argument"
       );
       liItemsFound.forEach(displayElementForEachLoop);
     }
