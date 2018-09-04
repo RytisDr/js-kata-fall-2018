@@ -1,25 +1,36 @@
 "use strict";
 
-function displayElement(element) {
+function displayElementForEachLoop(element) {
   //shows up with bullet points as optional
   console.log("\u2022" + element.innerHTML);
-  /*   for (let i = 0; i < element.length; i++) {
-    //console.log(element[i]);
-  } */
 }
+function displayElementForLoop(element) {
+  for (let i = 0; i < element.length; i++) {
+    console.log("\u2022" + element[i].innerHTML);
+  }
+}
+listMethods("modify", "for");
+listMethods("info", "forEach");
+listMethods("newarray", "fo");
 
-listMethods("modify");
-listMethods("info");
-listMethods("newarray");
-
-function listMethods(idParam) {
+function listMethods(idParam, loopArg) {
   let foundElement = document.getElementById(idParam);
   if (foundElement.id == idParam) {
     let liItemsFound = foundElement.querySelectorAll("ul li");
     let h2 = foundElement.querySelector("h2");
     console.log(h2.textContent);
-    liItemsFound.forEach(displayElement);
-    //displayElement();
+    if (loopArg == "for") {
+      console.log("with for loop method");
+      displayElementForLoop(liItemsFound);
+    } else if (loopArg == "forEach") {
+      console.log("with forEach loop method");
+      liItemsFound.forEach(displayElementForEachLoop);
+    } else {
+      console.log(
+        "undefined or incorrectly defined loopArg, goes to forEach loop method"
+      );
+      liItemsFound.forEach(displayElementForEachLoop);
+    }
   }
 }
 
