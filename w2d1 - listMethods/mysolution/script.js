@@ -15,7 +15,9 @@ listMethods("newarray");
 function listMethods(idParam) {
   let foundElement = document.getElementById(idParam);
   if (foundElement.id == idParam) {
-    let liItemsFound = Array.from(foundElement.querySelectorAll("ul li"));
+    let liItemsFound = foundElement.querySelectorAll("ul li");
+    let h2 = foundElement.querySelector("h2");
+    console.log(h2.textContent);
     liItemsFound.forEach(displayElement);
     //displayElement();
   }
