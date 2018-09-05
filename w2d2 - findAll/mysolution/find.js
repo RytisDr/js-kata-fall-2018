@@ -19,3 +19,9 @@ const animals = [
 ];
 const catsAt = findAll(animals, "cat");
 console.log(catsAt);
+
+let catMap = animals.map;
+console.log(catsAt);
+
+let catsFilter = animals.filter(findAll);
+console.log(catsFilter);
