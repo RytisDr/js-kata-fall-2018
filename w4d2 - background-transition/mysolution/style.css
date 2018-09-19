@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+}
+div {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  transition: background-color 2s;
+  margin-top: -4px;
+}
