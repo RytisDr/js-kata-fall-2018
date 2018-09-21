@@ -1,13 +1,31 @@
 "use strict";
 
+window.addEventListener("DOMContentLoaded", init);
+let template = document.querySelector("template").content;
 function fetchEndP() {
   let endP = "https://kea-alt-del.dk/kata-distortion/";
   fetch(endP)
     .then(e => e.json())
-    .then(showData);
+    .then(appendDivs);
 }
-function showData(data) {
-  document.querySelector("h1").textContent = data.inQueue;
+function appendDivs(data) {
+  let queueNumber = data.inQueue;
+  for (let i = 0; i < queueNumber; i++) {
+    let clone = template.cloneNode(true);
+    let circle = document.createElement("div");
+    clone.appendChild(circle);
+    document.querySelector("main").appendChild(clone);
+  }
 }
-fetchEndP();
-setInterval(fetchEndP, 10000);
+function removeDivs() {
+  while (document.querySelector("main").hasChildNodes()) {
+    document
+      .querySelector("main")
+      .removeChild(document.querySelector("main").firstChild);
+  }
+}
+function init() {
+  fetchEndP();
+  setInterval(removeDivs, 10000);
+  setInterval(fetchEndP, 10000);
+}
