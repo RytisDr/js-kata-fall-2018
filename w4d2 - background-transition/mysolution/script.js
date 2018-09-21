@@ -17,7 +17,6 @@ function colorSwitch(divElement, i) {
 
 function makeDivs() {
   //make as many divs as necessary to fill the height of the window on load, could try with resize, but am too lazy
-  let div;
   let screenHeight = window.innerHeight;
   let sectionHeight = document.querySelector("section").clientHeight;
   while (sectionHeight < screenHeight) {
