@@ -105,7 +105,7 @@ function clearData() {
     5: 0,
     6: 0
   }; */
-  //reset graph values
+  //reset graph values, loop would only make this longer
   polarArea.data.datasets[0].data = [0, 0, 0, 0, 0, 0];
   polarArea.update();
 }
