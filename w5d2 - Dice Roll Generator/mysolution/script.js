@@ -9,9 +9,16 @@ const values = {
   5: 0,
   6: 0
 };
+document.querySelector("button").addEventListener("click", function() {
+  if (document.querySelector("input").value > 0) {
+    //removeData(document.querySelector("#myChart"));
+    init();
+  }
+});
+
 window.addEventListener("DOMContentLoaded", init);
 function init() {
-  let numberOfRolls = 500;
+  let numberOfRolls = document.querySelector("input").value;
   values.totalRolls = numberOfRolls;
   for (let i = 0; i < numberOfRolls; i++) {
     let roll = Math.ceil(Math.random() * 6);
@@ -37,7 +44,7 @@ function createChart() {
         ],
         backgroundColor: [
           "hsl(40, 50%, 50%)",
-          "hsl(120, 50%, 50%)",
+          "hsl(260, 50%, 50%)",
           "hsl(80, 50%, 50%)",
           "hsl(160, 50%, 50%)",
           "hsl(0, 50%, 50%)",
@@ -54,8 +61,17 @@ function createChart() {
       "Rolled 6"
     ]
   };
+
   new Chart(myChart, {
     data: data,
     type: "polarArea"
   });
 }
+/* function removeData(chart) {
+  chart.data.labels.pop();
+  chart.data.datasets.forEach(dataset => {
+    dataset.data.pop();
+  });
+  chart.update();
+}
+ */
