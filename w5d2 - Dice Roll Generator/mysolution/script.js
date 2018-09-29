@@ -1,6 +1,6 @@
 "use strict";
 import Chart from "chart.js";
-//this is my polar area chart from chart.js
+//this is my polar area chart variable, it will be filled with a function and reused globally.
 let polarArea;
 //these are the initial values for the data that I am going to fill
 let values = {
@@ -49,7 +49,7 @@ function init(numberOfRolls) {
     ];
     ///chart.js function to update the graph(animated)
     polarArea.update();
-    //if the graph is not empty (as we are in else statement), clear data.
+    //if the graph is not empty (as we are in else statement), clear data upon btn click.
     document.querySelector("#clear").addEventListener("click", clearData);
   }
 }
@@ -84,13 +84,19 @@ function createChart() {
     ]
   };
 
+  /* create chart(grab DOM canvas, input data and set the chart.js type)
+  store this in a variable, as it will be reused for updating and clearing data */
   polarArea = new Chart(myChart, {
     data: data,
     type: "polarArea"
   });
 }
 function clearData() {
-  values = {
+  //reset stored values
+  for (let obj in values) {
+    values[obj] = 0;
+  } //^this is the loop version of the one below
+  /* values = {
     totalRolls: 0,
     1: 0,
     2: 0,
@@ -98,7 +104,8 @@ function clearData() {
     4: 0,
     5: 0,
     6: 0
-  };
+  }; */
+  //reset graph values
   polarArea.data.datasets[0].data = [0, 0, 0, 0, 0, 0];
   polarArea.update();
 }
