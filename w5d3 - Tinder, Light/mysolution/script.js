@@ -51,10 +51,32 @@ function showUser(user) {
 
   //this is hammer.js from http://hammerjs.github.io
   let userDivSwipes = new Hammer(userDiv);
-  userDivSwipes.on("swipeleft", function(ev) {
-    console.log(ev);
+  userDivSwipes.on("swipeleft", function() {
+    notInterested(userDiv);
   });
-  userDivSwipes.on("swiperight", function(ev) {
-    console.log(ev);
+  userDivSwipes.on("swiperight", function() {
+    interested(userDiv, user);
+  });
+}
+
+function notInterested(div) {
+  div.classList.add("goLeft");
+  div.addEventListener("transitionend", function() {
+    div.remove();
+  });
+}
+function interested(div, user) {
+  div.classList.add("goRight");
+  div.addEventListener("transitionend", function() {
+    div.remove();
+    if (user.inToYou) {
+      document.querySelector(".match").classList.remove("dontDisplay");
+      document.querySelector(".match h1").textContent = `You matched with ${
+        user.name.first
+      }!`;
+      setTimeout(function() {
+        document.querySelector(".match").classList.add("dontDisplay");
+      }, 1000);
+    }
   });
 }
