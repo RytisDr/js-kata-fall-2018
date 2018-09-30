@@ -3,13 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <title>Swipe</title>
 </head>
 
 <body>
+    <div id="prompt">
+        <h2>You are interested in: </h2>
+        <button id="males">Males</button>
+        <button id="females">Females</button>
+        <button id="both">Everyone</button>
+    </div>
+    <section id="user">
+    </section>
+    <template>
+        <img src="#" alt="user image">
+        <h3 id="firstN"></h3>
+        <h3 id="age"><span></span> Years Old</h3>
+        <h3 id="from">From: <span></span></h3>
+    </template>
+    <script src="hammer.js"></script>
     <script src="script.js"></script>
 </body>
 
