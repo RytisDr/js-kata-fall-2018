@@ -6,7 +6,6 @@ const textArea = document.querySelector("textarea");
 textArea.addEventListener("keydown", resizeOnKeystroke);
 function resizeOnKeystroke() {
   const inputLength = textArea.value.length;
-  let textSize = 5;
   /* This is the ternary operator '?'; https://javascript.info/ifelse#ternary-operator, */
   //The stupid version
   /* const textSize =
@@ -30,6 +29,7 @@ function resizeOnKeystroke() {
                       ? "1em"
                       : "0.5em"; */
   //the less stupid version
+  let textSize = 5;
   for (let i = 0; i < inputLength; i++) {
     textSize -= 0.04;
   }
@@ -40,5 +40,4 @@ function resizeOnKeystroke() {
     h1.textContent = "You talk too much.";
   }
   textArea.style.fontSize = textSize + "em";
-  console.log(textSize);
 }
