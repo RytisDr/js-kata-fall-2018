@@ -1,14 +1,15 @@
 "use strict";
 
 //BETTER DO THIS WITH SOMETHING ELSE THAN TEXTAREA, AS IT IS NOT FLEXIBLE ENOUGH
-
+//text scales down, but the text are does as well
 const textArea = document.querySelector("textarea");
 textArea.addEventListener("keydown", resizeOnKeystroke);
 function resizeOnKeystroke() {
   const inputLength = textArea.value.length;
+  let textSize = 5;
   /* This is the ternary operator '?'; https://javascript.info/ifelse#ternary-operator, */
-  //text scales down, but the text are does as well
-  const textSize =
+  //The stupid version
+  /* const textSize =
     inputLength < 2
       ? "5em"
       : inputLength < 5
@@ -27,8 +28,17 @@ function resizeOnKeystroke() {
                     ? "1.5em"
                     : inputLength < 40
                       ? "1em"
-                      : "0.5em";
-
-  textArea.style.fontSize = textSize;
+                      : "0.5em"; */
+  //the less stupid version
+  for (let i = 0; i < inputLength; i++) {
+    textSize -= 0.04;
+  }
+  //this creates one h1 with a text if text is long enough
+  if (inputLength > 100 && document.querySelector("h1") == undefined) {
+    let h1 = document.createElement("h1");
+    document.body.appendChild(h1);
+    h1.textContent = "You talk too much.";
+  }
+  textArea.style.fontSize = textSize + "em";
   console.log(textSize);
 }
