@@ -67,7 +67,7 @@ function counter(divNumber) {
     `div:nth-of-type(${divNumber}) h2`
   ).textContent = count;
 }
-/* from https://stackoverflow.com/questions/457826/pass-parameters-in-setinterval-function
+/* with help from https://stackoverflow.com/questions/457826/pass-parameters-in-setinterval-function
 and  https://stackoverflow.com/questions/40414792/disable-timer-within-setinterval-function-with-dynamic-parameters*/
 /* function createInterval(f, dynamicParameter, interval) {
   return setInterval(function() {
