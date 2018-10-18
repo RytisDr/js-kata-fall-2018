@@ -7,57 +7,54 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   //all number divs
   let allDivs = document.querySelectorAll("body div");
-  //interval time
-  let intervalTiming = 100;
-  //first div first
-  let divNumber = 1;
-  //set interval for counter, pass div number (1) as an argument
-  let interval = setInterval(function() {
-    counter(divNumber);
-  }, intervalTiming);
-
-  /*   function counterFunction() {
-    counter(divNumber);
-  } */
-
   //my set button
   let setBtn = document.querySelector("#set");
   //my reset button
   let resetBtn = document.querySelector("#reset");
+  //interval timing
+  let intervalTiming = 100;
+  //first div first
+  let divNumber = 1;
+  //apply the returned interval to a variable (to clear it later)
+  let callbackInterval = createInterval(counter, divNumber, intervalTiming);
+
   //upon set button click
   setBtn.addEventListener("click", switchDiv);
 
   function switchDiv() {
     //clear initial interval
-    clearInterval(interval);
+    clearInterval(callbackInterval);
     //if there are divs left to switch...
     if (divNumber < allDivs.length) {
       //...increment div number...
       divNumber++;
-      //...and reset interval (with new div number)
-      interval = setInterval(function() {
-        counter(divNumber);
-      }, intervalTiming);
+      //...and re-create interval (with new div number)
+      callbackInterval = createInterval(counter, divNumber, intervalTiming);
     }
 
-    //upon reset button click
+    //upon reset button click(note: only when switchDiv started)
     resetBtn.addEventListener("click", resetFields);
 
     function resetFields() {
       //clear initial interval
-      clearInterval(interval);
+      clearInterval(callbackInterval);
       //reset div number to first, 1...
       divNumber = 1;
       //...and clear all h2 text content inside each div;
       allDivs.forEach(div => {
         div.querySelector("h2").textContent = "";
       });
-      //...and reset interval (with new div number)
-      interval = setInterval(function() {
-        counter(divNumber);
-      }, intervalTiming);
+      //...and re-create interval (with new div number)
+      callbackInterval = createInterval(counter, divNumber, intervalTiming);
     }
   }
+}
+
+function createInterval(f, numberOfDiv, interval) {
+  //return interval (to clear it later)
+  return setInterval(function() {
+    f(numberOfDiv);
+  }, interval);
 }
 
 function counter(divNumber) {
@@ -69,8 +66,10 @@ function counter(divNumber) {
     `div:nth-of-type(${divNumber}) h2`
   ).textContent = count;
 }
+/* from https://stackoverflow.com/questions/457826/pass-parameters-in-setinterval-function
+and  https://stackoverflow.com/questions/40414792/disable-timer-within-setinterval-function-with-dynamic-parameters*/
 /* function createInterval(f, dynamicParameter, interval) {
-  setInterval(function() {
+  return setInterval(function() {
     f(dynamicParameter);
   }, interval);
 } //Then call it as createInterval(counter, divNumber, intervalTiming); */
