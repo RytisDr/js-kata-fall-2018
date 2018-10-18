@@ -15,21 +15,22 @@ function init() {
   let intervalTiming = 100;
   //first div first
   let divNumber = 1;
-  //apply the returned interval to a variable (to clear it later)
-  let callbackInterval = createInterval(counter, divNumber, intervalTiming);
+  /* Creates interval with passed parameters (counter function, div number, interval timing timing),
+  then asigns that interval to variable (to clear later)*/
+  let interval = createInterval(counter, divNumber, intervalTiming);
 
   //upon set button click
   setBtn.addEventListener("click", switchDiv);
 
   function switchDiv() {
     //clear initial interval
-    clearInterval(callbackInterval);
+    clearInterval(interval);
     //if there are divs left to switch...
     if (divNumber < allDivs.length) {
       //...increment div number...
       divNumber++;
       //...and re-create interval (with new div number)
-      callbackInterval = createInterval(counter, divNumber, intervalTiming);
+      interval = createInterval(counter, divNumber, intervalTiming);
     }
 
     //upon reset button click(note: only when switchDiv started)
@@ -37,7 +38,7 @@ function init() {
 
     function resetFields() {
       //clear initial interval
-      clearInterval(callbackInterval);
+      clearInterval(interval);
       //reset div number to first, 1...
       divNumber = 1;
       //...and clear all h2 text content inside each div;
@@ -45,7 +46,7 @@ function init() {
         div.querySelector("h2").textContent = "";
       });
       //...and re-create interval (with new div number)
-      callbackInterval = createInterval(counter, divNumber, intervalTiming);
+      interval = createInterval(counter, divNumber, intervalTiming);
     }
   }
 }
