@@ -13,6 +13,13 @@ document.querySelectorAll("input").forEach(input => {
           input.nextElementSibling.focus();
         }
       }
+      if (
+        input.name == "card-number" &&
+        input.checkValidity() &&
+        input.value.length == 16
+      ) {
+        document.querySelector('input[name="expiration-month"]').focus();
+      }
     });
   }
 });
