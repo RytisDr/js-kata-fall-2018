@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Mobile Payment Form</title>
+</head>
+
+<body>
+    <form action="" method="POST">
+        <input name="email" required type="email" placeholder="Email">
+        <input name="card-number" required type="number" pattern="[0-9]{16}" placeholder="Card Number">
+        <label for="expiration-month">Expires:</label>
+        <div id="expiry">
+            <input name="expiration-month" required type="number" min="1" max="12" placeholder="MM">
+            <input name="expiration-year" required type="number" min="18" max="23" placeholder="YY">
+        </div>
+        <input name="CVC" required type="number" min="000" max="999" placeholder="CVC">
+        <input type="submit" value="Checkout">
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
